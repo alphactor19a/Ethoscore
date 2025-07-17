@@ -1,0 +1,7 @@
+[theme]
+base = "light"
+backgroundColor = "#fff"
+secondaryBackgroundColor = "#fff"
+textColor = "#111"
+borderColor = "#111"
+showWidgetBorder = true 
