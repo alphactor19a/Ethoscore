@@ -91,6 +91,13 @@ zip -r ../ethoscore-extension-v1.0.0.zip . \
 - [ ] Single Purpose Description
 - [ ] Permissions Justification
 
+**Remote Code (Important):**
+- [ ] **Answer: NO** - Extension does NOT use remote code
+- [ ] **Justification**: See `REMOTE_CODE_JUSTIFICATION.md` for details
+  - All code is bundled in extension package
+  - Only JSON data is fetched from API (no code execution)
+  - Content Security Policy restricts to local code only
+
 ### Step 4: Privacy Policy
 
 **You MUST provide a privacy policy** because the extension:
