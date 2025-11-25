@@ -1,0 +1,73 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter Notebooks
+*.ipynb
+.ipynb_checkpoints/
+
+# Documentation (not needed for deployment)
+*.md
+docs/
+
+# UI frontend (separate deployment)
+ui/
+ui_old_*/
+
+# Chrome extension (separate deployment)
+chrome-extension/
+
+# Training data and scripts
+training_data/
+training_scripts/
+
+# Test files
+test_*.py
+example_*.py
+
+# Media files
+*.mp4
+*.pdf
+
+# Old UI exports
+ui-design-export.html
+ui.zip
+
+# Analytics data
+ui/analytics-data.json
+
+# Git
+.git/
+.gitignore
+
+# MCP config (not needed on server)
+mcp.json
+
+# Temporary files
+*.csv
+!Dataset-framing_annotations-Llama-3.3-70B-Instruct-Turbo.csv
+
+# Keep model files - they are needed!
+# ordinal_model_best_checkpoint.safetensors
+# 3class_model_best_checkpoint.safetensors
+
