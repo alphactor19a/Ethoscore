@@ -38,6 +38,7 @@ import LiteracyAbuDhabiJapan from './LiteracyAbuDhabiJapan';
 import LiteracySADCCongo from './LiteracySADCCongo';
 import LiteracyParaguayIndia from './LiteracyParaguayIndia';
 import LiteracyRichemont from './LiteracyRichemont';
+import BlogPostEmotions from './BlogPostEmotions';
 import imageGenerationFeedbackImage from './Gemini Generated Image (6).png';
 
 function TestimonialsSection() {
@@ -292,6 +293,11 @@ function App() {
   // If on blog page, show Blog component
   if (currentPage === 'blog') {
     return <Blog onNavigate={handleNavigate} />;
+  }
+
+  // If on blog post detail page
+  if (currentPage === 'blog-emotions') {
+    return <BlogPostEmotions onNavigate={handleNavigate} />;
   }
 
   // If on literacy page, show Careers component
