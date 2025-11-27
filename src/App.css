@@ -1,0 +1,353 @@
+/* Font Face Declaration */
+@font-face {
+  font-family: 'Klim Type Foundry';
+  src: url('./Copyright Klim Type Foundry-normal-400-100.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Cards Section - Spill Animation */
+
+.cards-section {
+  position: relative;
+}
+
+.cards {
+  /* Relative positioning creates positioning context for absolute children */
+  position: relative;
+  /* Fixed height equals card height - prevents vertical growth */
+  height: 386px;
+  /* Width accommodates horizontal overlap stack */
+  /* Rightmost card (331px) + 3 peek widths (3 × 75px = 225px) = 556px */
+  width: 556px;
+  margin: 0 auto;
+  /* Allow overflow for spilled cards */
+  overflow: visible;
+}
+
+/* Card wrappers - the elements that move */
+.card-wrap {
+  /* Removed from normal flow - absolute positioning */
+  position: absolute;
+  /* Base position - all wrappers start from same origin */
+  top: 0;
+  left: 0;
+  width: 331px;
+  height: 386px;
+  /* No margins, gaps, or flex/grid that could change position */
+  margin: 0;
+  /* Initial state - no transform */
+  transform: none;
+  transform-origin: 50% 50%;
+  will-change: transform;
+  transition: transform 1350ms cubic-bezier(0.2, 0.7, 0, 1), 
+              top 1350ms cubic-bezier(0.2, 0.7, 0, 1),
+              left 1350ms cubic-bezier(0.2, 0.7, 0, 1);
+  transition-delay: 0ms;
+}
+
+/* Horizontal overlap stack - like a deck slid sideways */
+/* All cards perfectly level (top: 0), overlapping horizontally */
+/* Rightmost card at 0px, each card to the left shifts further left */
+/* Option A: Subtle peek (~81px steps, ~22% of 360px card) */
+.card-wrap[data-index="0"] {
+  /* Leftmost card (back layer) */
+  top: 0;
+  left: 0;
+}
+
+.card-wrap[data-index="1"] {
+  /* Second card */
+  top: 0;
+  left: 75px;
+}
+
+.card-wrap[data-index="2"] {
+  /* Third card */
+  top: 0;
+  left: 150px;
+}
+
+.card-wrap[data-index="3"] {
+  /* Rightmost card (front layer) - fully visible */
+  top: 0;
+  left: 225px;
+}
+
+/* When spilled, reset offsets - transforms handle positioning */
+.cards.spill .card-wrap {
+  top: 0;
+  left: 0;
+}
+
+/* Base z-index assignment - depth hint via z-index */
+.card-wrap[data-index="0"] {
+  z-index: 10;
+}
+
+.card-wrap[data-index="1"] {
+  z-index: 20;
+}
+
+.card-wrap[data-index="2"] {
+  z-index: 30;
+}
+
+.card-wrap[data-index="3"] {
+  z-index: 40;
+}
+
+/* Stagger delays - Desktop (default) */
+.cards.spill .card-wrap[data-index="0"] {
+  transition-delay: 0ms;
+}
+
+.cards.spill .card-wrap[data-index="1"] {
+  transition-delay: 80ms;
+}
+
+.cards.spill .card-wrap[data-index="2"] {
+  transition-delay: 160ms;
+}
+
+.cards.spill .card-wrap[data-index="3"] {
+  transition-delay: 240ms;
+}
+
+/* Final spilled transforms - Desktop (exact targets) */
+.cards.spill .card-wrap[data-index="0"] {
+  transform: translateX(-328px) translateY(46px) rotate(-8deg);
+}
+
+.cards.spill .card-wrap[data-index="1"] {
+  transform: translateX(-299px) translateY(-14px) rotate(-8deg);
+}
+
+.cards.spill .card-wrap[data-index="2"] {
+  transform: translateX(44px) translateY(14px) rotate(1deg);
+}
+
+.cards.spill .card-wrap[data-index="3"] {
+  transform: translateX(404px) translateY(0px) rotate(10deg);
+}
+
+.card {
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Tablet (768px - 1199px) */
+@media (min-width: 768px) and (max-width: 1199px) {
+  /* Stagger delays - Tablet */
+  .cards.spill .card-wrap[data-index="0"] {
+    transition-delay: 0ms;
+  }
+
+  .cards.spill .card-wrap[data-index="1"] {
+    transition-delay: 60ms;
+  }
+
+  .cards.spill .card-wrap[data-index="2"] {
+    transition-delay: 120ms;
+  }
+
+  /* Scaled transforms - Tablet (0.7x translate, 0.8x rotate) */
+  .cards.spill .card-wrap[data-index="0"] {
+    transform: translateX(-230px) translateY(32px) rotate(-6.4deg);
+  }
+
+  .cards.spill .card-wrap[data-index="1"] {
+    transform: translateX(-209px) translateY(-10px) rotate(-6.4deg);
+  }
+
+  .cards.spill .card-wrap[data-index="2"] {
+    transform: translateX(31px) translateY(10px) rotate(0.8deg);
+  }
+
+  .cards.spill .card-wrap[data-index="3"] {
+    transform: translateX(283px) translateY(0px) rotate(8deg);
+  }
+}
+
+/* Mobile (<768px) - Mini-spill */
+@media (max-width: 767px) {
+  /* Stagger delays - Mobile */
+  .cards.spill .card-wrap[data-index="0"] {
+    transition-delay: 0ms;
+  }
+
+  .cards.spill .card-wrap[data-index="1"] {
+    transition-delay: 40ms;
+  }
+
+  .cards.spill .card-wrap[data-index="2"] {
+    transition-delay: 80ms;
+  }
+
+  /* Scaled transforms - Mobile (0.4x translate, 0.5x rotate) */
+  .cards.spill .card-wrap[data-index="0"] {
+    transform: translateX(-131px) translateY(18px) rotate(-4deg);
+  }
+
+  .cards.spill .card-wrap[data-index="1"] {
+    transform: translateX(-120px) translateY(-6px) rotate(-4deg);
+  }
+
+  .cards.spill .card-wrap[data-index="2"] {
+    transform: translateX(18px) translateY(6px) rotate(0.5deg);
+  }
+
+  .cards.spill .card-wrap[data-index="3"] {
+    transform: translateX(162px) translateY(0px) rotate(5deg);
+  }
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .card-wrap {
+    transition: none !important;
+  }
+
+  .card {
+    transition: none !important;
+  }
+
+  /* Jump directly to final state */
+  .cards.spill .card-wrap[data-index="0"] {
+    transform: translateX(-328px) translateY(46px) rotate(-8deg);
+  }
+
+  .cards.spill .card-wrap[data-index="1"] {
+    transform: translateX(-299px) translateY(-14px) rotate(-8deg);
+  }
+
+  .cards.spill .card-wrap[data-index="2"] {
+    transform: translateX(44px) translateY(14px) rotate(1deg);
+  }
+
+  .cards.spill .card-wrap[data-index="3"] {
+    transform: translateX(404px) translateY(0px) rotate(10deg);
+  }
+
+  /* Disable hover micro-interactions */
+  .card:hover {
+    transform: none;
+  }
+}
+
+/* Global text overflow prevention */
+* {
+  box-sizing: border-box;
+}
+
+/* Ensure text wrapping works properly for all text containers */
+div {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Prevent text overlap in flex containers */
+[style*="display: flex"],
+[style*="display: inline-flex"] {
+  min-width: 0;
+}
+
+/* Ensure proper spacing and prevent overlap */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Search Results Spill Animation (Vertical) */
+.search-cards-section {
+  position: relative;
+  width: 100%;
+}
+
+.search-cards {
+  position: relative;
+  width: 100%;
+  height: 1600px; /* Accommodate 3 cards vertically */
+  overflow: visible;
+}
+
+.search-card-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* height: auto; handled by content but we assume ~500px for animation logic */
+  transform-origin: 50% 0%;
+  will-change: transform;
+  transition: transform 2700ms cubic-bezier(0.2, 0.7, 0, 1), 
+              z-index 0ms;
+}
+
+/* Stacked State (Deck) */
+.search-card-wrap[data-index="0"] {
+  z-index: 3;
+  transform: scale(0.98) translateY(10px) rotate(-1.5deg);
+}
+
+.search-card-wrap[data-index="1"] {
+  z-index: 2;
+  transform: scale(0.96) translateY(20px) rotate(1.5deg);
+}
+
+.search-card-wrap[data-index="2"] {
+  z-index: 1;
+  transform: scale(0.94) translateY(30px) rotate(0.5deg);
+}
+
+/* Spilled State (Vertical List) */
+.search-cards.spill .search-card-wrap[data-index="0"] {
+  transform: translateY(0) rotate(0deg);
+  z-index: 3;
+}
+
+.search-cards.spill .search-card-wrap[data-index="1"] {
+  transform: translateY(520px) rotate(0deg); /* 500px card + 20px gap */
+  z-index: 3;
+}
+
+.search-cards.spill .search-card-wrap[data-index="2"] {
+  transform: translateY(1040px) rotate(0deg);
+  z-index: 3;
+}
+
+/* Stagger Delays */
+.search-cards.spill .search-card-wrap[data-index="0"] { transition-delay: 0ms; }
+.search-cards.spill .search-card-wrap[data-index="1"] { transition-delay: 0ms; }
+.search-cards.spill .search-card-wrap[data-index="2"] { transition-delay: 0ms; }
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
