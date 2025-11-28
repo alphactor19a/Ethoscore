@@ -1,0 +1,27 @@
+# Model files - downloaded at runtime from cloud storage
+3class_model_best_checkpoint.safetensors
+ordinal_model_best_checkpoint.safetensors
+Dataset-framing_annotations-Llama-3.3-70B-Instruct-Turbo.csv
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Environment
+.env
+.venv
+env/
+venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
