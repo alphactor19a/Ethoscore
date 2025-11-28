@@ -46,22 +46,30 @@ def ensure_models_downloaded(base_dir: Optional[str] = None) -> bool:
     Returns:
         True if all files exist or were successfully downloaded, False otherwise
     """
+    print(f"[download_models] ensure_models_downloaded called with base_dir={base_dir}")
     if base_dir is None:
         base_dir = os.getcwd()
     
     base_path = Path(base_dir)
+    print(f"[download_models] Checking for models in: {base_path}")
     
     # Check if all files already exist
-    all_exist = all((base_path / filename).exists() for filename in MODEL_FILES)
-    if all_exist:
+    missing_files = [f for f in MODEL_FILES if not (base_path / f).exists()]
+    if not missing_files:
+        print("[download_models] All model files already exist locally")
         logger.info("All model files already exist locally")
         return True
     
+    print(f"[download_models] Missing files: {missing_files}")
+    
     # Try direct HTTP downloads first (if URLs are configured)
+    print("[download_models] Attempting HTTP download...")
     if _download_models_via_http(base_path):
+        print("[download_models] HTTP download succeeded!")
         return True
     
     # Fall back to git-lfs (may fail if LFS budget exceeded)
+    print("[download_models] HTTP download failed or not configured. Trying Git LFS...")
     logger.warning("Direct HTTP download failed or not configured. Trying Git LFS...")
     return _download_models_with_git_lfs(base_path)
 
@@ -73,6 +81,7 @@ def _get_download_urls() -> Optional[Dict[str, str]]:
     Returns:
         Dictionary mapping filename to URL, or None if not configured
     """
+    print(f"[download_models] Checking for MODEL_BASE_URL environment variable: {MODEL_BASE_URL_ENV}")
     urls = {}
     
     # Check for base URL (files will be at BASE_URL/filename)
@@ -86,12 +95,14 @@ def _get_download_urls() -> Optional[Dict[str, str]]:
         return urls
     
     # Check for individual file URLs (MODEL_URL_ordinal_model_best_checkpoint.safetensors, etc.)
+    print(f"[download_models] Checking individual file URLs with prefix: {MODEL_URL_ENV_PREFIX}")
     for filename in MODEL_FILES:
         env_var = f"{MODEL_URL_ENV_PREFIX}{filename.upper().replace('.', '_').replace('-', '_')}"
         url = os.getenv(env_var)
+        print(f"[download_models] Checking {env_var}: {'SET' if url else 'NOT SET'}")
         if url:
             urls[filename] = url
-            print(f"[download_models] Found URL for {filename}")
+            print(f"[download_models] Found URL for {filename}: {url[:50]}...")
         else:
             print(f"[download_models] Environment variable {env_var} not set for {filename}")
     
@@ -101,6 +112,12 @@ def _get_download_urls() -> Optional[Dict[str, str]]:
         return urls
     
     print("[download_models] No model URLs found in environment variables")
+    # Debug: show all environment variables that start with MODEL_ to help troubleshoot
+    model_env_vars = {k: v for k, v in os.environ.items() if k.startswith('MODEL_')}
+    if model_env_vars:
+        print(f"[download_models] Found MODEL_* environment variables: {list(model_env_vars.keys())}")
+    else:
+        print("[download_models] No MODEL_* environment variables found at all")
     return None
 
 
