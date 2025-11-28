@@ -39,6 +39,7 @@ from src.article_processor import (
     ArticleExtractionError,
 )
 from src.batch_processor import BatchProcessor, parse_csv_input
+from src.download_models import ensure_models_downloaded
 
 
 app = FastAPI(title="Ethoscore API", version="1.0.0")
@@ -113,6 +114,15 @@ def startup_event() -> None:
     global analyzer
     global df_framing
     try:
+        # Ensure model files are downloaded (for deployment environments like Render)
+        import os
+        base_dir = os.path.dirname(os.path.dirname(__file__))  # Go up to repo root
+        print("[startup] Checking for model files...")
+        if not ensure_models_downloaded(base_dir):
+            print("[startup] WARNING: Could not download model files. Models may not work.")
+        else:
+            print("[startup] Model files are available.")
+        
         analyzer = create_analyzer()
     except ModelLoadingError as err:
         # Defer raising; health endpoint will report failure
