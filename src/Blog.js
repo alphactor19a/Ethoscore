@@ -1,6 +1,6 @@
 import React from 'react';
-import ethoscoreLogo from './ethoscore logo.png';
 import Footer from './Footer';
+import Header from './Header';
 
 // Arrow icon component (right arrow)
 function ArrowIcon() {
@@ -24,6 +24,7 @@ function BlogPostItem({ title, author, date, url, isInternal, onNavigate }) {
     <a 
       href={isInternal ? '#' : url}
       onClick={handleClick}
+      className="blog-post-item"
       style={{
         alignSelf: 'stretch',
         paddingTop: 24,
@@ -117,6 +118,7 @@ function ResourceItem({ title, description, url }) {
   return (
     <a 
       href={url}
+      className="blog-post-item"
       style={{
         alignSelf: 'stretch',
         paddingTop: 24,
@@ -305,8 +307,9 @@ function Blog({ onNavigate }) {
         backgroundPosition: '0 0',
         backgroundSize: '100% 24px'
       }}>
-        <div style={{
-          width: 528,
+        <div className="page-container" style={{
+          width: '100%',
+          maxWidth: 528,
           minHeight: '100vh',
           paddingRight: 1,
           borderRight: '1px var(--color-grey-90, #E7E5E4) solid',
@@ -317,264 +320,7 @@ function Blog({ onNavigate }) {
           position: 'relative'
         }}>
           {/* Header Section */}
-          <div style={{
-            alignSelf: 'stretch',
-            paddingTop: 64,
-            paddingLeft: 16,
-            paddingRight: 16,
-            paddingBottom: 48,
-            justifyContent: 'flex-start',
-            alignItems: 'center',
-            gap: 170.55,
-            display: 'inline-flex'
-          }}>
-            {/* Logo */}
-            <div 
-              onClick={() => onNavigate && onNavigate('home')}
-              style={{
-                flexDirection: 'column',
-                justifyContent: 'flex-start',
-                alignItems: 'flex-start',
-                display: 'inline-flex',
-                cursor: 'pointer'
-              }}
-            >
-              <div style={{
-                justifyContent: 'flex-start',
-                alignItems: 'center',
-                display: 'inline-flex'
-              }}>
-                <div style={{
-                  flexDirection: 'column',
-                  justifyContent: 'flex-start',
-                  alignItems: 'flex-start',
-                  display: 'inline-flex'
-                }}>
-                  <div style={{
-                    width: 32,
-                    height: 32,
-                    maxWidth: 32,
-                    overflow: 'hidden',
-                    flexDirection: 'column',
-                    justifyContent: 'flex-start',
-                    alignItems: 'flex-start',
-                    display: 'flex'
-                  }}>
-                    <img 
-                      src={ethoscoreLogo} 
-                      alt="Ethoscore Logo" 
-                      style={{
-                        width: 32,
-                        height: 32,
-                        objectFit: 'contain'
-                      }}
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Navigation */}
-            <div style={{
-              padding: 4,
-              background: 'var(--color-grey-90, #E7E5E4)',
-              borderRadius: 9999,
-              justifyContent: 'flex-start',
-              alignItems: 'flex-start',
-              display: 'flex',
-              boxShadow: '0px 1px 3px rgba(0, 0, 0, 0.1)',
-              flexWrap: 'nowrap',
-              whiteSpace: 'nowrap'
-            }}>
-              <div style={{
-                alignSelf: 'stretch',
-                flexDirection: 'column',
-                justifyContent: 'flex-start',
-                alignItems: 'flex-start',
-                display: 'inline-flex'
-              }}>
-                <div 
-                  onClick={() => onNavigate && onNavigate('home')}
-                  style={{
-                    paddingLeft: 8,
-                    paddingRight: 8,
-                    paddingTop: 4,
-                    paddingBottom: 4,
-                    borderRadius: 9999,
-                    flexDirection: 'column',
-                    justifyContent: 'flex-start',
-                    alignItems: 'flex-start',
-                    display: 'flex',
-                    cursor: 'pointer',
-                    whiteSpace: 'nowrap'
-                  }}
-                >
-                  <div style={{
-                    justifyContent: 'center',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    color: 'var(--color-grey-10, #1C1917)',
-                    fontSize: 14,
-                    fontFamily: 'SF Pro Text, sans-serif',
-                    fontWeight: '400',
-                    lineHeight: '21px',
-                    whiteSpace: 'nowrap'
-                  }}>
-                    Tool
-                  </div>
-                </div>
-              </div>
-              <div style={{
-                alignSelf: 'stretch',
-                flexDirection: 'column',
-                justifyContent: 'flex-start',
-                alignItems: 'flex-start',
-                display: 'inline-flex'
-              }}>
-                <div style={{
-                  paddingLeft: 8,
-                  paddingRight: 8,
-                  paddingTop: 4,
-                  paddingBottom: 4,
-                  background: 'black',
-                  borderRadius: 9999,
-                  flexDirection: 'column',
-                  justifyContent: 'flex-start',
-                  alignItems: 'flex-start',
-                  display: 'flex',
-                  whiteSpace: 'nowrap'
-                }}>
-                  <div style={{
-                    justifyContent: 'center',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    color: 'var(--color-white-solid, white)',
-                    fontSize: 14,
-                    fontFamily: 'SF Pro Text, sans-serif',
-                    fontWeight: '400',
-                    lineHeight: '21px',
-                    whiteSpace: 'nowrap'
-                  }}>
-                    Blog
-                  </div>
-                </div>
-              </div>
-              <div style={{
-                alignSelf: 'stretch',
-                flexDirection: 'column',
-                justifyContent: 'flex-start',
-                alignItems: 'flex-start',
-                display: 'inline-flex'
-              }}>
-                <div 
-                  onClick={() => onNavigate && onNavigate('about')}
-                  style={{
-                    paddingLeft: 8,
-                    paddingRight: 8,
-                    paddingTop: 4,
-                    paddingBottom: 4,
-                    borderRadius: 9999,
-                    flexDirection: 'column',
-                    justifyContent: 'flex-start',
-                    alignItems: 'flex-start',
-                    display: 'flex',
-                    cursor: 'pointer',
-                    whiteSpace: 'nowrap'
-                  }}
-                >
-                  <div style={{
-                    justifyContent: 'center',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    color: 'var(--color-grey-10, #1C1917)',
-                    fontSize: 14,
-                    fontFamily: 'SF Pro Text, sans-serif',
-                    fontWeight: '400',
-                    lineHeight: '21px',
-                    whiteSpace: 'nowrap'
-                  }}>
-                    About
-                  </div>
-                </div>
-              </div>
-              <div style={{
-                alignSelf: 'stretch',
-                flexDirection: 'column',
-                justifyContent: 'flex-start',
-                alignItems: 'flex-start',
-                display: 'inline-flex'
-              }}>
-                <div 
-                  onClick={() => onNavigate && onNavigate('literacy')}
-                  style={{
-                    paddingLeft: 8,
-                    paddingRight: 8,
-                    paddingTop: 4,
-                    paddingBottom: 4,
-                    borderRadius: 9999,
-                    flexDirection: 'column',
-                    justifyContent: 'flex-start',
-                    alignItems: 'flex-start',
-                    display: 'flex',
-                    cursor: 'pointer',
-                    whiteSpace: 'nowrap'
-                  }}
-                >
-                  <div style={{
-                    justifyContent: 'center',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    color: 'var(--color-grey-10, #1C1917)',
-                    fontSize: 14,
-                    fontFamily: 'SF Pro Text, sans-serif',
-                    fontWeight: '400',
-                    lineHeight: '21px',
-                    whiteSpace: 'nowrap'
-                  }}>
-                    Literacy
-                  </div>
-                </div>
-              </div>
-              <div style={{
-                alignSelf: 'stretch',
-                flexDirection: 'column',
-                justifyContent: 'flex-start',
-                alignItems: 'flex-start',
-                display: 'inline-flex'
-              }}>
-                <div 
-                  onClick={() => onNavigate && onNavigate('contact')}
-                  style={{
-                    paddingLeft: 8,
-                    paddingRight: 8,
-                    paddingTop: 4,
-                    paddingBottom: 4,
-                    borderRadius: 9999,
-                    flexDirection: 'column',
-                    justifyContent: 'flex-start',
-                    alignItems: 'flex-start',
-                    display: 'flex',
-                    cursor: 'pointer',
-                    whiteSpace: 'nowrap'
-                  }}
-                >
-                  <div style={{
-                    justifyContent: 'center',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    color: 'var(--color-grey-10, #1C1917)',
-                    fontSize: 14,
-                    fontFamily: 'SF Pro Text, sans-serif',
-                    fontWeight: '400',
-                    lineHeight: '21px',
-                    wordWrap: 'break-word'
-                  }}>
-                    Contact
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <Header currentPage="blog" onNavigate={onNavigate} />
 
           {/* Main Content */}
           <div style={{
@@ -608,7 +354,7 @@ function Blog({ onNavigate }) {
                 alignItems: 'flex-start',
                 display: 'flex'
               }}>
-                <div style={{
+                <div className="page-heading" style={{
                   alignSelf: 'stretch',
                   justifyContent: 'center',
                   display: 'flex',
@@ -671,7 +417,7 @@ function Blog({ onNavigate }) {
                 alignItems: 'flex-start',
                 display: 'flex'
               }}>
-                <div style={{
+                <div className="page-heading" style={{
                   alignSelf: 'stretch',
                   justifyContent: 'center',
                   display: 'flex',

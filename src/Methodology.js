@@ -36,9 +36,9 @@ function Methodology({ onNavigate }) {
         backgroundPosition: '0 0',
         backgroundSize: '100% 24px'
       }}>
-        <div style={{
-          width: 1304,
-          maxWidth: '100%',
+        <div className="page-container" style={{
+          width: '100%',
+          maxWidth: 1304,
           minHeight: '100vh',
           paddingRight: 1,
           borderRight: '1px var(--color-grey-90, #E7E5E4) solid',
@@ -49,15 +49,15 @@ function Methodology({ onNavigate }) {
           position: 'relative'
         }}>
           {/* Header Section */}
-          <div style={{ marginLeft: 388 }}>
+          <div style={{width: '100%', maxWidth: 528, margin: '0 auto', display: 'flex', flexDirection: 'column'}}>
             <Header currentPage="methodology" onNavigate={onNavigate} />
           </div>
 
           {/* Main Content Section */}
-          <div style={{
+          <div className="page-content-wrapper methodology-section" style={{
             alignSelf: 'stretch',
-            paddingLeft: 404,
-            paddingRight: 364,
+            paddingLeft: 16,
+            paddingRight: 16,
             paddingBottom: 48,
             position: 'relative',
             flexDirection: 'column',
@@ -66,8 +66,8 @@ function Methodology({ onNavigate }) {
             display: 'flex'
           }}>
             <div style={{
-              width: 528,
-              maxWidth: '100%',
+              width: '100%',
+              maxWidth: 528,
               position: 'relative',
               flexDirection: 'column',
               justifyContent: 'flex-start',
@@ -103,7 +103,7 @@ function Methodology({ onNavigate }) {
                   display: 'flex',
                   marginBottom: 8
                 }}>
-                  <div style={{
+                  <div className="page-heading" style={{
                     color: 'var(--color-grey-15, #292524)',
                     fontSize: 40.7,
                     fontFamily: 'Klim Type Foundry',

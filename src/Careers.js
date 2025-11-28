@@ -249,9 +249,9 @@ function Careers({ onNavigate }) {
         backgroundPosition: '0 0',
         backgroundSize: '100% 24px'
       }}>
-        <div style={{
-          width: 1304,
-          maxWidth: '100%',
+        <div className="page-container" style={{
+          width: '100%',
+          maxWidth: 1304,
           minHeight: '100vh',
           paddingRight: 1,
           borderRight: '1px var(--color-grey-90, #E7E5E4) solid',
@@ -263,15 +263,15 @@ function Careers({ onNavigate }) {
         }}>
           
           {/* Header Section */}
-          <div style={{ marginLeft: 388 }}>
+          <div style={{width: '100%', maxWidth: 528, margin: '0 auto', display: 'flex', flexDirection: 'column'}}>
             <Header currentPage="literacy" onNavigate={onNavigate} />
           </div>
 
           {/* Main Content Section */}
-          <div style={{
+          <div className="page-content-wrapper" style={{
             alignSelf: 'stretch',
-            paddingLeft: 388,
-            paddingRight: 388,
+            paddingLeft: 16,
+            paddingRight: 16,
             paddingTop: 0,
             paddingBottom: 48,
             flexDirection: 'column',
@@ -279,10 +279,11 @@ function Careers({ onNavigate }) {
             alignItems: 'flex-start',
             display: 'flex'
           }}>
-            <div style={{
-              width: 528,
-              paddingLeft: 24,
-              paddingRight: 24,
+            <div className="category-container" style={{
+              width: '100%',
+              maxWidth: 528,
+              paddingLeft: 0,
+              paddingRight: 0,
               flexDirection: 'column',
               justifyContent: 'flex-start',
               alignItems: 'flex-start',
@@ -297,7 +298,7 @@ function Careers({ onNavigate }) {
                 alignItems: 'flex-start',
                 display: 'flex'
               }}>
-                <div style={{
+                <div className="page-heading" style={{
                   color: 'var(--color-grey-15, #292524)',
                   fontSize: 40.7,
                   fontFamily: 'Klim Type Foundry',

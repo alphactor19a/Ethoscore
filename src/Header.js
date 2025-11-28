@@ -40,8 +40,7 @@ function Header({ currentPage, onNavigate }) {
   });
 
   return (
-    <div style={{
-      alignSelf: 'stretch',
+    <div className="header-container" style={{
       paddingTop: 64,
       paddingLeft: 16,
       paddingRight: 16,
@@ -98,7 +97,7 @@ function Header({ currentPage, onNavigate }) {
       </div>
 
       {/* Navigation */}
-      <div style={{
+      <div className="header-nav" style={{
         padding: 4,
         background: 'var(--color-grey-90, #E7E5E4)',
         borderRadius: 9999,
@@ -123,6 +122,7 @@ function Header({ currentPage, onNavigate }) {
               e.stopPropagation();
               onNavigate && onNavigate('tool');
             }}
+            className="nav-item"
             style={navItemStyle('tool')}
           >
             <div style={textStyle('tool')}>Tool</div>
@@ -143,6 +143,7 @@ function Header({ currentPage, onNavigate }) {
               e.stopPropagation();
               onNavigate && onNavigate('blog');
             }}
+            className="nav-item"
             style={navItemStyle('blog')}
           >
             <div style={textStyle('blog')}>Blog</div>
@@ -163,6 +164,7 @@ function Header({ currentPage, onNavigate }) {
               e.stopPropagation();
               onNavigate && onNavigate('about');
             }}
+            className="nav-item"
             style={navItemStyle('about')}
           >
             <div style={textStyle('about')}>About</div>
@@ -183,6 +185,7 @@ function Header({ currentPage, onNavigate }) {
               e.stopPropagation();
               onNavigate && onNavigate('literacy');
             }}
+            className="nav-item"
             style={navItemStyle('literacy')}
           >
             <div style={textStyle('literacy')}>Literacy</div>
@@ -203,6 +206,7 @@ function Header({ currentPage, onNavigate }) {
               e.stopPropagation();
               onNavigate && onNavigate('contact');
             }}
+            className="nav-item"
             style={navItemStyle('contact')}
           >
             <div style={textStyle('contact')}>Contact</div>

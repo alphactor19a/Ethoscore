@@ -82,9 +82,9 @@ function Contacts({ onNavigate }) {
         backgroundPosition: '0 0',
         backgroundSize: '100% 24px'
       }}>
-        <div style={{
-          width: 1304,
-          maxWidth: '100%',
+        <div className="page-container" style={{
+          width: '100%',
+          maxWidth: 1304,
           minHeight: '100vh',
           paddingRight: 1,
           borderRight: '1px var(--color-grey-90, #E7E5E4) solid',
@@ -96,15 +96,15 @@ function Contacts({ onNavigate }) {
         }}>
           
           {/* Header Section */}
-          <div style={{ marginLeft: 388 }}>
+          <div style={{width: '100%', maxWidth: 528, margin: '0 auto', display: 'flex', flexDirection: 'column'}}>
             <Header currentPage="contact" onNavigate={onNavigate} />
           </div>
 
           {/* Main Content Section */}
-          <div style={{
+          <div className="page-content-wrapper contact-form-container" style={{
             alignSelf: 'stretch',
-            paddingLeft: 194,
-            paddingRight: 194,
+            paddingLeft: 16,
+            paddingRight: 16,
             paddingBottom: 48,
             position: 'relative',
             flexDirection: 'column',
@@ -113,9 +113,10 @@ function Contacts({ onNavigate }) {
             display: 'flex'
           }}>
             <div style={{
-              width: 916,
-              maxWidth: '100%',
-              height: 603,
+              width: '100%',
+              maxWidth: 916,
+              minHeight: 603,
+              height: 'auto',
               position: 'relative',
               alignSelf: 'center'
             }}>
@@ -152,8 +153,9 @@ function Contacts({ onNavigate }) {
                 boxSizing: 'border-box'
               }}>
                 {/* Left Content Section */}
-                <div style={{
-                  width: 322,
+                <div className="contact-form-left" style={{
+                  width: '100%',
+                  maxWidth: 322,
                   flexDirection: 'column',
                   justifyContent: 'flex-start',
                   alignItems: 'flex-start',
@@ -173,7 +175,7 @@ function Contacts({ onNavigate }) {
                       alignItems: 'flex-start',
                       display: 'flex'
                     }}>
-                      <div style={{
+                      <div className="page-heading" style={{
                         justifyContent: 'center',
                         display: 'flex',
                         flexDirection: 'column',
@@ -352,8 +354,9 @@ function Contacts({ onNavigate }) {
                 </div>
 
                 {/* Right Form Section */}
-                <div style={{
-                  width: 448,
+                <div className="contact-form-right" style={{
+                  width: '100%',
+                  maxWidth: 448,
                   background: '#FAFAFA',
                   borderRadius: 8,
                   padding: '24px 32px',
@@ -448,10 +451,11 @@ function Contacts({ onNavigate }) {
                     </div>
 
                       {/* Phone and LinkedIn Row */}
-                    <div style={{
+                    <div className="form-row-mobile" style={{
                       display: 'flex',
                       gap: 8,
-                      width: '100%'
+                      width: '100%',
+                      flexWrap: 'wrap'
                     }}>
                       {/* Phone Field */}
                       <div style={{

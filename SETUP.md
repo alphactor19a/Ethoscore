@@ -83,6 +83,28 @@ npm run build
 
 The build folder will contain the production-ready files.
 
+## API Configuration
+
+The frontend connects to the EthoScore backend API for article analysis. Configure the API URL using environment variables:
+
+### Local Development
+Create a `.env` file in the project root:
+```
+REACT_APP_ETHOSCORE_API_URL=http://localhost:8000
+```
+
+### Production (Vercel/Other Platforms)
+Set the environment variable in your deployment platform:
+- **Vercel**: Go to Project Settings → Environment Variables
+- Add: `REACT_APP_ETHOSCORE_API_URL` = `https://ethoscore-extension.onrender.com`
+
+The frontend will automatically use this URL to call the backend API endpoints:
+- `/analyze/url` - Analyze articles from URLs
+- `/analyze/text` - Analyze articles from text input
+- `/explore/topic` - Search and explore topics
+
+**Note**: The backend must have models loaded (see backend `RENDER_SETUP.md`) for these endpoints to work.
+
 ## Deployment
 
 The built files can be deployed to any static hosting service:
@@ -91,6 +113,8 @@ The built files can be deployed to any static hosting service:
 - GitHub Pages
 - AWS S3
 - etc.
+
+**Important**: Remember to set the `REACT_APP_ETHOSCORE_API_URL` environment variable in your deployment platform!
 
 ## Figma Design Reference
 

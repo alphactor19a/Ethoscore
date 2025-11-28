@@ -116,7 +116,8 @@ function TestimonialsSection() {
       ref={sectionRef}
       className="cards-section"
       style={{
-        width: 556,
+        width: '100%',
+        maxWidth: 556,
         minHeight: '442px',
         position: 'relative',
         marginTop: 48
@@ -415,30 +416,30 @@ function App() {
 
   // Original landing page
   return (
-    <div style={{width: '100%', minHeight: '100vh', background: 'transparent', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'flex', position: 'relative', zIndex: 2}}>
+    <div className="page-shell" style={{width: '100%', minHeight: '100vh', background: 'transparent', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'flex', position: 'relative', zIndex: 2}}>
       <div style={{alignSelf: 'stretch', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', display: 'flex', backgroundImage: 'repeating-linear-gradient(to bottom, transparent, transparent 23px, #E7E5E4 23px, #E7E5E4 24px)', backgroundPosition: '0 0', backgroundSize: '100% 24px'}}>
-        <div style={{width: 528, minHeight: 893, paddingRight: 1, borderRight: '1px var(--color-grey-90, #E7E5E4) solid', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'flex', position: 'relative'}}>
+        <div className="main-content-container page-content-wrapper" style={{width: '100%', maxWidth: 528, minHeight: 893, paddingRight: 1, borderRight: '1px var(--color-grey-90, #E7E5E4) solid', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'flex', position: 'relative'}}>
           
           {/* Header Section */}
           <Header currentPage={currentPage} onNavigate={handleNavigate} />
 
           {/* Hero Section */}
-          <div style={{alignSelf: 'stretch', paddingTop: 8, position: 'relative', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 120, display: 'flex'}}>
+          <div className="hero-section" style={{alignSelf: 'stretch', paddingTop: 8, position: 'relative', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 120, display: 'flex'}}>
             {/* Hero Text with Side Images */}
             <div style={{alignSelf: 'stretch', paddingRight: 8, paddingTop: 40, position: 'relative', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 8, display: 'flex'}}>
               {/* Windmill on the left side of title */}
-              <div style={{width: 320, left: -360, top: 20, position: 'absolute', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'inline-flex', zIndex: 1}}>
+              <div className="decorative-windmill" style={{width: 320, left: -360, top: 20, position: 'absolute', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'inline-flex', zIndex: 1}}>
                 <img style={{width: '100%', height: 'auto', maxWidth: 320, position: 'relative'}} src="/windmill_no_reeds.png" alt="Windmill" />
               </div>
               
               {/* Tree on the right side of title */}
-              <div style={{width: 350, right: -300, top: 40, position: 'absolute', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'inline-flex', zIndex: 1}}>
+              <div className="decorative-tree" style={{width: 350, right: -300, top: 40, position: 'absolute', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'inline-flex', zIndex: 1}}>
                 <img style={{width: '100%', height: 'auto', maxWidth: 350, position: 'relative'}} src="/tree1.png" alt="Tree" />
               </div>
 
               <div style={{alignSelf: 'stretch', paddingTop: 0, paddingBottom: 8, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'flex', position: 'relative', zIndex: 2}}>
                 <div style={{alignSelf: 'stretch', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'flex'}}>
-                  <div style={{alignSelf: 'stretch', justifyContent: 'flex-start', display: 'flex', flexDirection: 'column', color: 'var(--color-grey-15, #292524)', fontSize: 40.70, fontFamily: 'Klim Type Foundry', fontWeight: '550', lineHeight: '48px', wordWrap: 'break-word'}}>
+                  <div className="hero-title" style={{alignSelf: 'stretch', justifyContent: 'flex-start', display: 'flex', flexDirection: 'column', color: 'var(--color-grey-15, #292524)', fontSize: 40.70, fontFamily: 'Klim Type Foundry', fontWeight: '550', lineHeight: '48px', wordWrap: 'break-word'}}>
                     Sense the pattern between<br/>words and meaning.
                   </div>
                 </div>
@@ -482,14 +483,14 @@ function App() {
             <div style={{alignSelf: 'stretch', paddingRight: 8, paddingTop: 0, marginTop: -20, position: 'relative', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 4, display: 'flex'}}>
               <div style={{alignSelf: 'stretch', paddingTop: 0, paddingBottom: 8, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'flex', position: 'relative', zIndex: 2}}>
                 <div style={{alignSelf: 'stretch', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'flex', marginTop: 24}}>
-                  <div style={{alignSelf: 'stretch', justifyContent: 'flex-start', display: 'flex', flexDirection: 'column', color: 'var(--color-grey-15, #292524)', fontSize: 28, fontFamily: 'Klim Type Foundry', fontWeight: '550', lineHeight: '28.80px', wordWrap: 'break-word'}}>Why emotional framing?</div>
+                  <div className="section-heading" style={{alignSelf: 'stretch', justifyContent: 'flex-start', display: 'flex', flexDirection: 'column', color: 'var(--color-grey-15, #292524)', fontSize: 28, fontFamily: 'Klim Type Foundry', fontWeight: '550', lineHeight: '28.80px', wordWrap: 'break-word'}}>Why emotional framing?</div>
                 </div>
               </div>
 
-              <img src="/garden.png" alt="Garden" style={{width: 526.99, height: 526.15, position: 'relative', marginTop: -1}} />
+              <img src="/garden.png" alt="Garden" style={{width: '100%', maxWidth: 526.99, height: 'auto', position: 'relative', marginTop: -1}} />
 
               {/* Feature Cards in Column */}
-              <div style={{alignSelf: 'stretch', paddingTop: 0, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'flex', gap: 20, marginRight: 24}}>
+              <div className="feature-cards-row" style={{alignSelf: 'stretch', paddingTop: 0, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'flex', gap: 20, marginRight: 24}}>
                 <div style={{alignSelf: 'stretch', paddingTop: 13, paddingBottom: 8, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 4, display: 'flex'}}>
                   <div style={{alignSelf: 'stretch', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'flex'}}>
                     <div style={{alignSelf: 'stretch', justifyContent: 'flex-start', display: 'flex', flexDirection: 'column', color: 'var(--color-grey-15, #292524)', fontSize: 14, fontFamily: 'SF Pro Text', fontWeight: '500', lineHeight: '21px', wordWrap: 'break-word'}}>
@@ -520,7 +521,7 @@ function App() {
 
             {/* Battle-tested Governor Section */}
             <div style={{alignSelf: 'stretch', position: 'relative', paddingTop: 0, paddingBottom: 0, marginTop: -54}}>
-              <div style={{width: 527, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'inline-flex'}}>
+              <div style={{width: '100%', maxWidth: 527, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'inline-flex'}}>
                 <div style={{justifyContent: 'center', display: 'flex', flexDirection: 'column', fontSize: 19.70, fontFamily: 'Inter', fontWeight: '400', lineHeight: '28.80px', wordWrap: 'break-word'}}>
                   <span style={{
                     display: 'inline-flex',
@@ -579,16 +580,16 @@ function App() {
                   </span>
                 </div>
               </div>
-              <div style={{width: 527, paddingTop: 2, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'inline-flex'}}>
+              <div style={{width: '100%', maxWidth: 527, paddingTop: 2, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'inline-flex'}}>
                 <div style={{justifyContent: 'center', display: 'flex', flexDirection: 'column', color: 'var(--color-grey-32, #57534E)', fontSize: 14, fontFamily: 'SF Pro Text', fontWeight: '400', lineHeight: '21px', wordWrap: 'break-word'}}>
                   Ethoscore uses transformer models trained on 125,000+ articles from major<br/>news sources, used by researchers and educators to analyze emotional framing.<br/>
                 </div>
               </div>
               <div style={{width: '100%', paddingTop: 12, flexDirection: 'column', justifyContent: 'center', alignItems: 'center', display: 'flex', position: 'relative'}}>
-                <img style={{width: 700, height: 'auto', maxWidth: '100%', position: 'relative', marginLeft: -30}} src={imageGenerationFeedbackImage} alt="Governance Chart" />
+                <img style={{width: '100%', maxWidth: 700, height: 'auto', position: 'relative', marginLeft: 0}} src={imageGenerationFeedbackImage} alt="Governance Chart" />
                 
                 {/* Decorative Tree Container with Flying Birds - positioned per Figma */}
-                <div style={{width: 420, left: 395, top: -100.07, position: 'absolute', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'flex'}}>
+                <div className="decorative-birds-container" style={{width: 420, left: 395, top: -100.07, position: 'absolute', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'flex'}}>
                   {/* Flying Bird 1 */}
                   <div style={{width: 32, height: 18.74, left: 228, top: 128, position: 'absolute', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'flex'}}>
                     <img style={{width: '100%', height: '100%', maxWidth: 32, position: 'relative'}} src="/flying-bird-1.png" alt="Flying Bird 1" />
@@ -609,10 +610,10 @@ function App() {
                 </div>
                 
                 {/* Mailbox - positioned per Figma */}
-                <img style={{width: 104.95, height: 160, left: 502.05, top: 159.93, position: 'absolute'}} src="/mailbox.png" alt="Mailbox" />
+                <img className="decorative-mailbox" style={{width: 104.95, height: 160, left: 502.05, top: 159.93, position: 'absolute'}} src="/mailbox.png" alt="Mailbox" />
               </div>
-              <div style={{width: 527, paddingTop: 24, paddingBottom: 0, justifyContent: 'center', alignItems: 'flex-start', gap: 32, display: 'inline-flex'}}>
-                <div style={{flex: '1 1 0', alignSelf: 'stretch', paddingTop: 0, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 4, display: 'inline-flex'}}>
+              <div className="stats-row" style={{width: '100%', maxWidth: 527, paddingTop: 24, paddingBottom: 0, justifyContent: 'center', alignItems: 'flex-start', gap: 32, display: 'inline-flex'}}>
+                <div className="stat-item" style={{flex: '1 1 0', alignSelf: 'stretch', paddingTop: 0, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 4, display: 'inline-flex'}}>
                   <div style={{alignSelf: 'stretch', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'flex'}}>
                     <div style={{alignSelf: 'stretch', justifyContent: 'center', display: 'flex', flexDirection: 'column', color: 'var(--color-grey-15, #292524)', fontSize: 20.10, fontFamily: 'Klim Type Foundry', fontWeight: '400', lineHeight: '28.80px', wordWrap: 'break-word'}}>89.7% accuracy</div>
                   </div>
@@ -620,7 +621,7 @@ function App() {
                     <div style={{alignSelf: 'stretch', justifyContent: 'center', display: 'flex', flexDirection: 'column', color: 'var(--color-grey-32, #57534E)', fontSize: 14, fontFamily: 'Klim Type Foundry', fontWeight: '400', lineHeight: '21px', wordWrap: 'break-word'}}>Held-out validated performance</div>
                   </div>
                 </div>
-                <div style={{flex: '1 1 0', alignSelf: 'stretch', paddingTop: 0, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 4, display: 'inline-flex'}}>
+                <div className="stat-item" style={{flex: '1 1 0', alignSelf: 'stretch', paddingTop: 0, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 4, display: 'inline-flex'}}>
                   <div style={{alignSelf: 'stretch', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'flex'}}>
                     <div style={{alignSelf: 'stretch', justifyContent: 'center', display: 'flex', flexDirection: 'column', color: 'var(--color-grey-15, #292524)', fontSize: 19.90, fontFamily: 'Klim Type Foundry', fontWeight: '400', lineHeight: '28.80px', wordWrap: 'break-word'}}>149 topics analyzed</div>
                   </div>
@@ -632,15 +633,15 @@ function App() {
             </div>
 
             <div style={{alignSelf: 'stretch', position: 'relative', paddingBottom: 0, paddingTop: 0, marginTop: -40}}>
-              <div style={{width: 527, paddingTop: 0, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'inline-flex'}}>
+              <div style={{width: '100%', maxWidth: 527, paddingTop: 0, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'inline-flex'}}>
                 <div style={{justifyContent: 'center', display: 'flex', flexDirection: 'column', color: 'var(--color-grey-15, #292524)', fontSize: 28, fontFamily: 'Klim Type Foundry', fontWeight: '550', lineHeight: '28.80px', wordWrap: 'break-word'}}>
                   How can we understand media framing?
                 </div>
               </div>
 
               {/* Feature Cards */}
-              <div style={{width: 527, paddingRight: 16, paddingTop: 8, justifyContent: 'center', alignItems: 'flex-start', gap: 16, display: 'inline-flex'}}>
-                <div style={{flex: '1 1 0', alignSelf: 'stretch', paddingTop: 0, paddingBottom: 0, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 4, display: 'inline-flex'}}>
+              <div className="feature-cards-row" style={{width: '100%', maxWidth: 527, paddingRight: 16, paddingTop: 8, justifyContent: 'center', alignItems: 'flex-start', gap: 16, display: 'inline-flex'}}>
+                <div className="feature-card" style={{flex: '1 1 0', alignSelf: 'stretch', paddingTop: 0, paddingBottom: 0, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 4, display: 'inline-flex'}}>
                 <div style={{alignSelf: 'stretch', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'flex'}}>
                   <div style={{alignSelf: 'stretch', justifyContent: 'center', display: 'flex', flexDirection: 'column', color: 'var(--color-grey-15, #292524)', fontSize: 14, fontFamily: 'SF Pro Text', fontWeight: '500', lineHeight: '21px', wordWrap: 'break-word'}}>1. Rhetorical analysis</div>
                 </div>
@@ -650,7 +651,7 @@ function App() {
                   </div>
                 </div>
                 </div>
-                <div style={{flex: '1 1 0', alignSelf: 'stretch', paddingTop: 0, paddingBottom: 0, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 4, display: 'inline-flex'}}>
+                <div className="feature-card" style={{flex: '1 1 0', alignSelf: 'stretch', paddingTop: 0, paddingBottom: 0, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 4, display: 'inline-flex'}}>
                 <div style={{alignSelf: 'stretch', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'flex'}}>
                   <div style={{alignSelf: 'stretch', justifyContent: 'center', display: 'flex', flexDirection: 'column', color: 'var(--color-grey-15, #292524)', fontSize: 14, fontFamily: 'SF Pro Text', fontWeight: '500', lineHeight: '21px', wordWrap: 'break-word'}}>2. Vested meaning</div>
                 </div>
@@ -663,7 +664,7 @@ function App() {
               </div>
 
               {/* Protocol Links */}
-              <div style={{width: 527, paddingTop: 20, paddingBottom: 0, marginBottom: 0, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'flex'}}>
+              <div style={{width: '100%', maxWidth: 527, paddingTop: 20, paddingBottom: 0, marginBottom: 0, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'flex'}}>
                 {(() => {
                   const logoMap = {
                     'The Guardian': 'https://logo.clearbit.com/theguardian.com',
@@ -686,8 +687,8 @@ function App() {
                     ['Associated Press', 'Wall Street Journal']
                   ].map((row, rowIndex) => (
                     <React.Fragment key={rowIndex}>
-                      <div style={{width: 527, paddingTop: rowIndex === 4 ? 0 : 2, paddingBottom: rowIndex === 4 ? 0 : 2, flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 16, display: 'inline-flex'}}>
-                        <div style={{flex: '1 1 0', paddingTop: rowIndex === 4 ? 0 : 2, paddingBottom: rowIndex === 4 ? 0 : 2, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'inline-flex'}}>
+                      <div className="protocol-links-row" style={{width: '100%', maxWidth: 527, paddingTop: rowIndex === 4 ? 0 : 2, paddingBottom: rowIndex === 4 ? 0 : 2, flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 16, display: 'inline-flex'}}>
+                        <div className="protocol-link-item" style={{flex: '1 1 0', paddingTop: rowIndex === 4 ? 0 : 2, paddingBottom: rowIndex === 4 ? 0 : 2, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'inline-flex'}}>
                           <div style={{alignSelf: 'stretch', justifyContent: 'flex-start', alignItems: 'center', gap: 8, display: 'inline-flex'}}>
                             <img style={{width: 32, height: 32, maxWidth: 261.50, position: 'relative', objectFit: 'contain'}} src={logoMap[row[0]]} alt={`${row[0]} Logo`} />
                             <div style={{flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'inline-flex'}}>
@@ -697,7 +698,7 @@ function App() {
                             </div>
                           </div>
                         </div>
-                        <div style={{flex: '1 1 0', paddingTop: rowIndex === 4 ? 0 : 2, paddingBottom: rowIndex === 4 ? 0 : 2, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'inline-flex'}}>
+                        <div className="protocol-link-item" style={{flex: '1 1 0', paddingTop: rowIndex === 4 ? 0 : 2, paddingBottom: rowIndex === 4 ? 0 : 2, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'inline-flex'}}>
                           <div style={{alignSelf: 'stretch', justifyContent: 'flex-start', alignItems: 'center', gap: 8, display: 'inline-flex'}}>
                             <img style={{width: 32, height: 32, maxWidth: 261.50, position: 'relative', objectFit: 'contain'}} src={logoMap[row[1]]} alt={`${row[1]} Logo`} />
                             <div style={{flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'inline-flex'}}>
@@ -709,7 +710,7 @@ function App() {
                         </div>
                       </div>
                       {rowIndex === 4 && (
-                        <div key="pill" style={{width: 527, paddingTop: 24, paddingBottom: 0, flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', gap: 8, display: 'inline-flex'}}>
+                        <div key="pill" style={{width: '100%', maxWidth: 527, paddingTop: 24, paddingBottom: 0, flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', gap: 8, display: 'inline-flex'}}>
                           <div 
                             onClick={(e) => {
                               e.preventDefault();
@@ -729,12 +730,12 @@ function App() {
 
             {/* Final CTA Section */}
             <div style={{alignSelf: 'stretch', position: 'relative', paddingTop: 0, marginTop: -48, paddingBottom: 48}}>
-              <div style={{width: 527, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'inline-flex'}}>
-                <div style={{justifyContent: 'center', display: 'flex', flexDirection: 'column', color: 'var(--color-grey-15, #292524)', fontSize: 40.10, fontFamily: 'Inter', fontWeight: '400', lineHeight: '48px', wordWrap: 'break-word'}}>
+              <div style={{width: '100%', maxWidth: 527, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'inline-flex'}}>
+                <div className="cta-heading" style={{justifyContent: 'center', display: 'flex', flexDirection: 'column', color: 'var(--color-grey-15, #292524)', fontSize: 40.10, fontFamily: 'Inter', fontWeight: '400', lineHeight: '48px', wordWrap: 'break-word'}}>
                   See beyond the words.
                 </div>
               </div>
-              <div style={{width: 527, paddingBottom: 4, paddingTop: 8, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'inline-flex', marginRight: 24}}>
+              <div style={{width: '100%', maxWidth: 527, paddingBottom: 4, paddingTop: 8, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'inline-flex', marginRight: 24}}>
                 <div style={{justifyContent: 'center', display: 'flex', flexDirection: 'column', color: 'var(--color-grey-32, #57534E)', fontSize: 14, fontFamily: 'SF Pro Text', fontWeight: '400', lineHeight: '21px', wordWrap: 'break-word'}}>
                   <span style={{whiteSpace: 'nowrap'}}>Featured in <a href="https://mediacloud.org" target="_blank" rel="noopener noreferrer" style={{color: 'var(--color-grey-32, #57534E)', textDecoration: 'underline'}}>MediaCloud</a> research—a Harvard and MIT incubated consortium</span><br />collaboration. The goal is to create a new standard to push media literacy forward.
                 </div>
@@ -745,7 +746,7 @@ function App() {
                     <div style={{textAlign: 'center', justifyContent: 'center', display: 'flex', flexDirection: 'column', color: 'var(--color-grey-10, #1C1917)', fontSize: 14, fontFamily: 'SF Pro Text', fontWeight: '400', lineHeight: '21px', wordWrap: 'break-word'}}>View Research</div>
                   </div>
                 </a>
-                <img style={{width: 527, height: 478.25, position: 'relative', marginTop: 8}} src="/Treehouse Illustration.png" alt="Treehouse" />
+                <img style={{width: '100%', maxWidth: 527, height: 'auto', position: 'relative', marginTop: 8}} src="/Treehouse Illustration.png" alt="Treehouse" />
               </div>
             </div>
           </div>

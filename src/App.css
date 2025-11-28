@@ -6,6 +6,46 @@
   font-style: normal;
 }
 
+/* Global layout helpers */
+.page-container {
+  width: 100%;
+  max-width: 1304px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-shell {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-header-wrapper {
+  width: 100%;
+}
+
+.page-content-wrapper,
+.main-content-container,
+.content-column {
+  width: 100%;
+  max-width: 528px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-heading {
+  font-family: 'Klim Type Foundry', serif;
+}
+
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
+}
+
 /* Cards Section - Spill Animation */
 
 .cards-section {
@@ -178,34 +218,92 @@
 
 /* Mobile (<768px) - Mini-spill */
 @media (max-width: 767px) {
-  /* Stagger delays - Mobile */
-  .cards.spill .card-wrap[data-index="0"] {
+  /* Cards container responsive */
+  .cards-section {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 12px;
+  }
+
+  .cards {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    height: auto !important;
+  }
+
+  /* Card wrappers stack vertically */
+  .card-wrap {
+    position: relative !important;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    min-height: auto;
+    top: auto !important;
+    left: auto !important;
+    margin-bottom: 16px;
+  }
+
+  .cards.spill .card-wrap {
+    transform: none;
     transition-delay: 0ms;
   }
 
-  .cards.spill .card-wrap[data-index="1"] {
-    transition-delay: 40ms;
+  /* Hide decorative elements on mobile */
+  .decorative-windmill,
+  .decorative-tree,
+  .decorative-birds-container,
+  .decorative-mailbox {
+    display: none !important;
   }
 
-  .cards.spill .card-wrap[data-index="2"] {
-    transition-delay: 80ms;
+  /* Main container responsive */
+  .main-content-container {
+    width: 100% !important;
+    max-width: 100vw !important;
+    padding: 0 16px !important;
+    border-right: none !important;
   }
 
-  /* Scaled transforms - Mobile (0.4x translate, 0.5x rotate) */
-  .cards.spill .card-wrap[data-index="0"] {
-    transform: translateX(-131px) translateY(18px) rotate(-4deg);
+  /* Hero section responsive */
+  .hero-section {
+    width: 100% !important;
+    padding: 0 16px !important;
   }
 
-  .cards.spill .card-wrap[data-index="1"] {
-    transform: translateX(-120px) translateY(-6px) rotate(-4deg);
+  /* Responsive images */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
   }
 
-  .cards.spill .card-wrap[data-index="2"] {
-    transform: translateX(18px) translateY(6px) rotate(0.5deg);
+  /* Responsive text sizes */
+  .hero-title {
+    font-size: 28px !important;
+    line-height: 34px !important;
   }
 
-  .cards.spill .card-wrap[data-index="3"] {
-    transform: translateX(162px) translateY(0px) rotate(5deg);
+  .section-heading {
+    font-size: 24px !important;
+    line-height: 28px !important;
+  }
+
+  .cta-heading {
+    font-size: 32px !important;
+    line-height: 38px !important;
+  }
+
+  .feature-cards-row,
+  .protocol-links-row,
+  .stats-row {
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+
+  .feature-card,
+  .protocol-link-item,
+  .stat-item {
+    width: 100% !important;
   }
 }
 
@@ -349,5 +447,344 @@ html, body {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* Tablet responsive styles */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .main-content-container {
+    width: 100% !important;
+    max-width: 600px !important;
+    padding: 0 24px !important;
+  }
+
+  .cards {
+    width: 100%;
+    max-width: 556px;
+  }
+
+  .decorative-windmill,
+  .decorative-tree {
+    display: none !important;
+  }
+}
+
+/* Desktop header - ensure proper layout */
+.header-container {
+  display: inline-flex !important;
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
+  width: 100% !important;
+  max-width: 528px !important;
+  box-sizing: border-box !important;
+}
+
+/* Page header wrapper - no extra padding since Header has its own */
+.page-header-wrapper {
+  width: 100%;
+}
+
+/* Mobile header adjustments */
+@media (max-width: 767px) {
+  .header-container {
+    flex-direction: column !important;
+    gap: 16px !important;
+    padding: 32px 16px 24px 16px !important;
+    justify-content: flex-start !important;
+  }
+
+  .header-nav {
+    width: 100% !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+  }
+
+  .nav-item {
+    font-size: 12px !important;
+    padding: 4px 8px !important;
+  }
+
+  /* Fix fixed widths in content */
+  .main-content-container > * {
+    max-width: 100% !important;
+  }
+
+  /* Make all fixed width containers responsive */
+  [style*="width: 527"],
+  [style*="width: 528"],
+  [style*="width: 556"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  /* Responsive gaps */
+  .hero-section {
+    gap: 60px !important;
+  }
+
+  /* Make all content sections full width with padding */
+  .main-content-container > div > div {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Page-specific responsive fixes */
+  /* About, Blog, Careers, Contacts, Methodology, Tools pages */
+  [style*="width: 1304"],
+  [style*="width: 528"],
+  [style*="width: 916"] {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Large padding values - reduce on mobile */
+  [style*="paddingLeft: 388"],
+  [style*="paddingLeft: 404"],
+  [style*="paddingLeft: 194"],
+  [style*="paddingRight: 364"],
+  [style*="paddingRight: 388"],
+  [style*="paddingRight: 194"],
+  [style*="marginLeft: 388"] {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    margin-left: 0 !important;
+  }
+
+  /* Form containers */
+  [style*="width: 322"],
+  [style*="width: 448"] {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Contact form responsive */
+  .contact-form-container {
+    flex-direction: column !important;
+    gap: 24px !important;
+  }
+
+  .contact-form-left,
+  .contact-form-right {
+    width: 100% !important;
+  }
+
+  /* Blog post items */
+  .blog-post-item {
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+
+  /* Careers/Literacy categories */
+  .category-container {
+    width: 100% !important;
+    padding: 16px !important;
+  }
+
+  /* Methodology sections */
+  .methodology-section {
+    width: 100% !important;
+    padding: 0 16px !important;
+  }
+
+  /* Tools search results */
+  .search-cards-section {
+    width: 100% !important;
+    padding: 0 16px !important;
+  }
+
+  /* Text sizes for mobile */
+  [style*="fontSize: 40.7"],
+  [style*="fontSize: 40.9"],
+  [style*="fontSize: 36.4"] {
+    font-size: 28px !important;
+    line-height: 34px !important;
+  }
+
+  [style*="fontSize: 24"] {
+    font-size: 20px !important;
+    line-height: 26px !important;
+  }
+
+  [style*="fontSize: 20.6"],
+  [style*="fontSize: 20.3"] {
+    font-size: 18px !important;
+    line-height: 24px !important;
+  }
+
+  /* Reduce gaps on mobile */
+  [style*="gap: 33"],
+  [style*="gap: 32"] {
+    gap: 24px !important;
+  }
+
+  /* Make all flex rows stack on mobile */
+  [style*="flexDirection: 'row'"]:not([class*="no-stack"]) {
+    flex-direction: column !important;
+  }
+
+  /* Input fields full width */
+  input, textarea {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Button groups stack */
+  [style*="display: 'inline-flex'"][style*="gap: 8"] {
+    flex-wrap: wrap !important;
+  }
+
+  /* Page container responsive */
+  .page-container {
+    width: 100% !important;
+    max-width: 100vw !important;
+    padding: 0 !important;
+    border-right: none !important;
+  }
+
+  /* Page header wrapper */
+  .page-header-wrapper {
+    width: 100% !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    margin-left: 0 !important;
+  }
+
+  /* Page content wrapper */
+  .page-content-wrapper {
+    width: 100% !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  /* Page headings responsive */
+  .page-heading {
+    font-size: 28px !important;
+    line-height: 34px !important;
+  }
+
+  /* Blog post items stack on mobile */
+  .blog-post-item {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+  }
+
+  /* Contact form responsive */
+  .contact-form-container {
+    flex-direction: column !important;
+  }
+
+  .contact-form-left,
+  .contact-form-right {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .form-row-mobile {
+    flex-direction: column !important;
+  }
+
+  .form-row-mobile > div {
+    width: 100% !important;
+    flex: 1 1 100% !important;
+  }
+
+  /* Category container */
+  .category-container {
+    width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* Methodology sections */
+  .methodology-section {
+    width: 100% !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  /* Search cards section */
+  .search-cards-section {
+    width: 100% !important;
+    padding: 0 16px !important;
+  }
+
+  /* Contact form border container */
+  [style*="width: 916"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+  }
+
+  /* Contact form inner container */
+  [style*="width: calc(100% - 50px)"] {
+    width: calc(100% - 20px) !important;
+  }
+
+  [style*="left: 25"] {
+    left: 10px !important;
+  }
+
+  [style*="top: 20"] {
+    top: 10px !important;
+  }
+
+  [style*="border: '25px"] {
+    border-width: 10px !important;
+  }
+
+  /* Header gap reduction */
+  .page-header-wrapper [style*="gap: 170.55"],
+  .header-container[style*="gap: 170.55"] {
+    gap: 16px !important;
+    flex-direction: column !important;
+  }
+
+  /* Reduce padding in cards */
+  [style*="padding: '24px 32px'"] {
+    padding: 16px !important;
+  }
+
+  /* Tools page tabs responsive */
+  [style*="borderRadius: 9999"][style*="background: 'var(--color-grey-90"] {
+    flex-wrap: wrap !important;
+    gap: 4px !important;
+  }
+
+  /* Search result cards */
+  .search-card-wrap {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Data cards in search results */
+  [style*="flex: '1 1 200px'"] {
+    flex: 1 1 100% !important;
+    min-width: 100% !important;
+  }
+
+  /* Methodology tabs */
+  [style*="flexDirection: 'row'"][style*="borderBottom"] {
+    flex-wrap: wrap !important;
+  }
+
+  /* Careers category buttons */
+  button[style*="width: '100%'"] {
+    padding: 12px !important;
+  }
+
+  /* Image containers */
+  [style*="width: 528"][style*="position: 'relative'"] {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Lighthouse image hide on mobile */
+  [style*="position: 'absolute'"][style*="bottom: 100"] {
+    display: none !important;
   }
 }

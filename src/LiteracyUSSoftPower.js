@@ -45,7 +45,7 @@ function LiteracyUSSoftPower({ onNavigate }) {
         }}>
           
           {/* Header Section */}
-          <div style={{ marginLeft: 388 }}>
+          <div style={{width: '100%', maxWidth: 528, margin: '0 auto', display: 'flex', flexDirection: 'column'}}>
             <Header currentPage="literacy" onNavigate={onNavigate} />
           </div>
 
@@ -1047,6 +1047,7 @@ function LiteracyUSSoftPower({ onNavigate }) {
 }
 
 export default LiteracyUSSoftPower;
+
 
 
 

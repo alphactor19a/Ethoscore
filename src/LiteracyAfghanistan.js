@@ -44,7 +44,7 @@ function LiteracyAfghanistan({ onNavigate }) {
           position: 'relative'
         }}>
           
-          <div style={{ marginLeft: 388 }}>
+          <div style={{width: '100%', maxWidth: 528, margin: '0 auto', display: 'flex', flexDirection: 'column'}}>
             <Header currentPage="literacy" onNavigate={onNavigate} />
           </div>
 
@@ -289,6 +289,7 @@ function LiteracyAfghanistan({ onNavigate }) {
 }
 
 export default LiteracyAfghanistan;
+
 
 
 
