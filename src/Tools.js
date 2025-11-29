@@ -57,8 +57,14 @@ const buildResultId = (record, prefix = 'result') => {
 };
 
 const formatBackendResult = (record, context = {}) => {
+  // Debug logging
+  console.log('formatBackendResult received:', record);
+  
   const ordinalRaw = record?.analysis?.ordinal_analysis || record?.ordinal_analysis || {};
   const classificationRaw = record?.analysis?.classification_analysis || record?.classification_analysis || {};
+  
+  console.log('ordinalRaw:', ordinalRaw);
+  console.log('classificationRaw:', classificationRaw);
   const fallbackConcept = context.fallbackConcept || record?.concept || record?.source || 'Article';
   const fallbackTitle = context.fallbackTitle || record?.title || fallbackConcept;
   const preview = truncatePreview(
@@ -671,11 +677,13 @@ function Tools({ onNavigate }) {
 
     try {
       const response = await callAnalyzerApi('/analyze/url', { url: normalizedUrl });
+      console.log('URL analysis raw response:', response);
       if (activeRequestId.current !== requestId) {
         return;
       }
       // Extract the analysis data from the response
       const analysisData = response?.data || response;
+      console.log('URL analysis extracted data:', analysisData);
       setSearchResults([
         formatBackendResult(analysisData, {
           prefix: 'url',
