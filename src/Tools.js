@@ -670,17 +670,20 @@ function Tools({ onNavigate }) {
     const domain = deriveDomain(normalizedUrl);
 
     try {
-      const data = await callAnalyzerApi('/analyze/url', { url: normalizedUrl });
+      const response = await callAnalyzerApi('/analyze/url', { url: normalizedUrl });
       if (activeRequestId.current !== requestId) {
         return;
       }
+      // Extract the analysis data from the response
+      const analysisData = response?.data || response;
       setSearchResults([
-        formatBackendResult(data, {
+        formatBackendResult(analysisData, {
           prefix: 'url',
-          fallbackConcept: data?.concept || domain || 'Submitted URL',
-          fallbackTitle: data?.title || domain || 'Article from URL',
-          fallbackSource: data?.source || domain,
-          sourceUrl: data?.source_url || normalizedUrl,
+          fallbackConcept: analysisData?.concept || domain || 'Submitted URL',
+          fallbackTitle: analysisData?.title || domain || 'Article from URL',
+          fallbackSource: analysisData?.metadata?.source || analysisData?.source || domain,
+          sourceUrl: analysisData?.source_url || normalizedUrl,
+          fallbackPreview: analysisData?.body?.slice(0, 600) || '',
         }),
       ]);
       setHasSearched(true);
@@ -708,18 +711,21 @@ function Tools({ onNavigate }) {
     const preparedTitle = textTitle.trim() || 'Untitled article';
 
     try {
-      const data = await callAnalyzerApi('/analyze/text', {
+      const response = await callAnalyzerApi('/analyze/text', {
         title: preparedTitle,
         body: textInput.trim(),
       });
       if (activeRequestId.current !== requestId) {
         return;
       }
+      // Extract the analysis data from the response
+      const analysisData = response?.data || response;
       setSearchResults([
-        formatBackendResult(data, {
+        formatBackendResult(analysisData, {
           prefix: 'text',
-          fallbackConcept: data?.concept || 'Submitted text',
-          fallbackTitle: data?.title || preparedTitle,
+          fallbackConcept: analysisData?.concept || 'Submitted text',
+          fallbackTitle: analysisData?.title || preparedTitle,
+          fallbackPreview: textInput.trim().slice(0, 600),
         }),
       ]);
       setHasSearched(true);
